@@ -33,9 +33,7 @@ const sel=()=>boxes.filter(b=>b.checked).map(b=>b.value);
 function upd(){const d=sel();document.getElementById("n").textContent=d.length;
   gm.disabled=ap.disabled=!d.length;try{localStorage.setItem(K,JSON.stringify(d))}catch(e){}}
 boxes.forEach(b=>b.addEventListener("change",upd));upd();
-const su=()=>"[논문선택] "+KEY+" "+sel().length+"편", body=()=>sel().join("
-")+"
-", q=encodeURIComponent;
+const su=()=>"[논문선택] "+KEY+" "+sel().length+"편", body=()=>sel().join("\n")+"\n", q=encodeURIComponent;
 gm.onclick=()=>window.open("https://mail.google.com/mail/?authuser="+q(ME)+"&view=cm&fs=1&to="+q(TO)+"&su="+q(su())+"&body="+q(body()),"_blank");
 ap.onclick=()=>location.href="mailto:"+TO+"?subject="+q(su())+"&body="+q(body());
 </script></body></html>
