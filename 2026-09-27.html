@@ -75,7 +75,8 @@ const boxes=[...document.querySelectorAll("input")], gm=document.getElementById(
 try{const s=JSON.parse(localStorage.getItem(K)||"[]");boxes.forEach(b=>b.checked=s.includes(b.value))}catch(e){}
 const sel=()=>boxes.filter(b=>b.checked).map(b=>b.value);
 function upd(){const d=sel();document.getElementById("n").textContent=d.length;
-  gm.disabled=ap.disabled=!d.length&&!OLD;   // 검토 칸이 있으면 0편도 보낼 수 있다(전부 지움)try{localStorage.setItem(K,JSON.stringify(d))}catch(e){}}
+  gm.disabled=ap.disabled=!d.length&&!OLD;   // 검토 칸이 있으면 0편도 보낼 수 있다(전부 지움)
+  try{localStorage.setItem(K,JSON.stringify(d))}catch(e){}}
 boxes.forEach(b=>b.addEventListener("change",upd));upd();
 const su=()=>"[논문선택] "+KEY+" "+sel().length+"편", body=()=>sel().join("\n")+"\n", q=encodeURIComponent;
 const done=()=>document.getElementById("msg").style.display="block";
